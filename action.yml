@@ -2,14 +2,17 @@ name: 'Dokku Github Action'
 description: 'Deploy applications to Dokku'
 author: 'Vitaly Liber'
 branding:
-  icon: 'upload-cloud'  
+  icon: 'upload-cloud'
   color: 'blue'
-inputs: 
+inputs:
   private_key:
     description: "This will be used for ssh authentication. You can find it in home/.ssh/id_rsa"
     required: true
   public_key:
     description: "This will be used for ssh authentication. You can find it in id_rsa.pub"
+    required: true
+  serve_url:
+    description: "Hosting url (subdomain in which all projects will be hosted under), e.g. 'projects.google.com' would result in 'branch.projects.google.com'."
     required: true
 outputs:
   status:
