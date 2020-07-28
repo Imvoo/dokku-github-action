@@ -1,21 +1,9 @@
-FROM debian:stable-slim
+FROM alpine:3.12
 
-# Github labels
-LABEL "com.github.actions.name"="dokku-github-action"
-LABEL "com.github.actions.description"="Deploy application to Dokku (all branches)"
-LABEL "com.github.actions.icon"="mic"
-LABEL "com.github.actions.color"="purple"
-
-LABEL "repository"="http://github.com/vitalyliber/dokku-github-action"
-LABEL "homepage"="http://github.com/actions"
-LABEL "maintainer"="VitalyLiber <zenamax@gmail.com>"
-
-RUN apt-get update && apt-get install -y \
-  openssh-client \
-  git && \
-  rm -Rf /var/lib/apt/lists/*
-
+RUN apk add openssh git
 
 ADD entrypoint.sh /entrypoint.sh
+
 RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
