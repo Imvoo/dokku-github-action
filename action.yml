@@ -11,9 +11,6 @@ inputs:
   public_key:
     description: "This will be used for ssh authentication. You can find it in id_rsa.pub"
     required: true
-  serve_url:
-    description: "Hosting url (subdomain in which all projects will be hosted under), e.g. 'projects.google.com' would result in 'branch.projects.google.com'."
-    required: true
 outputs:
   status:
     description: "The Success/Failure of the action"
