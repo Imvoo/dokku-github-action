@@ -14,10 +14,10 @@ CURRENT_BRANCH=${GITHUB_REF##*/}
 BRANCH_FULLNAME=${GITHUB_REF#refs/heads/}
 
 GIT_COMMAND="git push dokku@$HOST:${CURRENT_BRANCH}.${HOST} ${BRANCH_FULLNAME}:master"
-if [ -n "$FORCE_DEPLOY" ]; then
-    echo "Enabling force deploy"
-    GIT_COMMAND="$GIT_COMMAND --force"
-fi
+# if [ -n "$FORCE_DEPLOY" ]; then
+echo "Enabling force deploy"
+GIT_COMMAND="$GIT_COMMAND --force"
+# fi
 
 GIT_SSH_COMMAND="ssh -p ${PORT-22} -i $SSH_PATH/deploy_key"
 if [ -n "$HOST_KEY" ]; then
