@@ -11,8 +11,9 @@ echo "$PRIVATE_KEY" > "$SSH_PATH/deploy_key"
 chmod 600 "$SSH_PATH/deploy_key"
 
 CURRENT_BRANCH=${GITHUB_REF##*/}
+BRANCH_FULLNAME=${GITHUB_REF#refs/heads/}
 
-GIT_COMMAND="git push dokku@$HOST:${CURRENT_BRANCH}.${HOST} ${CURRENT_BRANCH}:master"
+GIT_COMMAND="git push dokku@$HOST:${CURRENT_BRANCH}.${HOST} ${BRANCH_FULLNAME}:master"
 if [ -n "$FORCE_DEPLOY" ]; then
     echo "Enabling force deploy"
     GIT_COMMAND="$GIT_COMMAND --force"
